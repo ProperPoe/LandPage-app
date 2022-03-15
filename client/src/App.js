@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Layout from "./components/Layout";
 import Display from "./components/Display";
@@ -28,7 +29,12 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Router>
+        <Header />
+        <Routes>
+          <Route path='/' exact />
+        </Routes>
+      </Router>
       <Layout name={setName} age={setAge} user={setUsername} create={createUser} />
       <Display names={listOfUsers}  />
     </div>
