@@ -45,9 +45,9 @@ function App() {
         <button onClick={createUser}> Create User </button>
       </div>
       <div className="usersDisplay">
-        {listOfUsers.map((user) => {
+        {listOfUsers.map((user, id) => {
           return (
-            <div className="info">
+            <div key={id} className="info">
               <h3 className="name">Name: {user.name}</h3> 
               <h3 className="age">Age: {user.age}</h3> 
               <h3 className="user">Username: {user.username}</h3>
