@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const UserModel = require('./models/Users');
 const cors = require('cors');
+const userRoutes = require('./routes/users')
 
 const app = express();
 dotenv.config();
@@ -10,23 +11,8 @@ dotenv.config();
 app.use(express.json());
 app.use(cors());
 
-app.get('/getUsers', (req, res) => {
-    UserModel.find({}, (err, result) => {
-        if(err){
-            res.json(err)
-        } else {
-            res.json(result)
-        }
-    })
-})
-
-app.post('/createUser', async (req, res) => {
-    const user = req.body;
-    const newUser = new UserModel(user);
-    await newUser.save();
-
-    res.json(user)
-})
+//middelware used to connect routes
+app.use('/', userRoutes)
 
 mongoose.connect(process.env.CONNECT)
 
