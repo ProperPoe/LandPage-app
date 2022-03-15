@@ -13,9 +13,9 @@ function App() {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-    Axios.get("http://localhost:9001/getUsers").then((response) => {
-      setListOfUsers(response.data);
-    });
+    Axios.get("http://localhost:9001/getUsers")
+      .then((response) => {setListOfUsers(response.data);}
+    );
   }, []);
 
   const createUser = () => {
@@ -23,9 +23,7 @@ function App() {
       name,
       age,
       username,
-    }).then((response) => {
-      setListOfUsers([...listOfUsers,{name, age, username}]);
-    });
+    }).then((response) => {setListOfUsers([...listOfUsers,{name, age, username}]);});
   };
 
   return (
