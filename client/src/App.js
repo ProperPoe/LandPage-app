@@ -2,6 +2,10 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
+import Layout from "./components/Layout";
+import Display from "./components/Display";
+import Header from "./components/Header";
+
 function App() {
   const [listOfUsers, setListOfUsers] = useState([]);
   const [name, setName] = useState("");
@@ -26,35 +30,9 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <input
-          type="text"
-          placeholder="Name..."
-          onChange={(event) => {setName(event.target.value);}}
-        />
-        <input
-          type="number"
-          placeholder="Age..."
-          onChange={(event) => {setAge(event.target.value);}}
-        />
-        <input
-          type="text"
-          placeholder="Username..."
-          onChange={(event) => {setUsername(event.target.value);}}
-        />
-        <button onClick={createUser}> Create User </button>
-      </div>
-      <div className="usersDisplay">
-        {listOfUsers.map((user, id) => {
-          return (
-            <div key={id} className="info">
-              <h3 className="name">Name: {user.name}</h3> 
-              <h3 className="age">Age: {user.age}</h3> 
-              <h3 className="user">Username: {user.username}</h3>
-            </div>
-          );
-        })}
-      </div>
+      <Header />
+      <Layout name={setName} age={setAge} user={setUsername} create={createUser} />
+      <Display names={listOfUsers}  />
     </div>
   );
 }

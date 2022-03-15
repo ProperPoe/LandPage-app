@@ -1,3 +1,18 @@
+.header {
+  background-color: aqua;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-text {
+  list-style-type: none;
+  display: flex;
+}
+
+.nav-text li {
+  margin-right: 10px;
+}
+
 .info {
   display: flex;
 }
