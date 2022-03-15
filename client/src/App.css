@@ -1,0 +1,12 @@
+.info {
+  display: flex;
+}
+.name {
+  margin-right: 10px;
+}
+.age {
+  margin-right: 10px;
+}
+.user {
+  margin-right: 10px;
+}
