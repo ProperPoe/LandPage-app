@@ -2,11 +2,13 @@ const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const UserModel = require('./models/Users');
+const cors = require('cors');
 
 const app = express();
 dotenv.config();
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/getUsers', (req, res) => {
     UserModel.find({}, (err, result) => {
