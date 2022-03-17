@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
+import { LoginBtn } from './LoginBtn' 
 import { Button } from './Button'
 import './Header.css';
 
@@ -36,8 +37,10 @@ export default function Header() {
             <ul className={click ? 'nav-text active' : 'nav-text'}>
                 <li className='nav-item'><Link to="/" className='nav-links' onClick={closeMobileMenu}>Home</Link></li>
                 <li className='nav-item'><Link to="/contact" className='nav-links' onClick={closeMobileMenu}>Contact</Link></li>
+                <li className='nav-item'><Link to="/login" className='nav-links-mobile' onClick={closeMobileMenu}>Login</Link></li>
                 <li className='nav-item'><Link to="/sign-up" className='nav-links-mobile' onClick={closeMobileMenu}>Sign Up</Link></li>
             </ul>
+            {button && <LoginBtn buttonStyle='btn--outline'>LOGIN</LoginBtn>}
             {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
         </div>
         
