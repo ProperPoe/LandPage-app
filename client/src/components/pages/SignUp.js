@@ -17,7 +17,9 @@ export default function SignUp() {
       );
     }, []);
   
-    const createUser = () => {
+    const createUser = (e) => {
+      e.preventDefault()
+
       Axios.post("http://localhost:9001/createUser", {
         name,
         age,
