@@ -21,7 +21,7 @@ export default function Layout ({name, age, user, create}) {
           placeholder="Username..."
           onChange={(event) => {user(event.target.value);}}
         />
-        <NoteBtn buttonStyle="btn--outline"> Create User </NoteBtn>
+        <NoteBtn> Create User </NoteBtn>
       </form>
     </div>
   )
