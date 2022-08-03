@@ -14,7 +14,7 @@ export default function Header() {
     const closeMobileMenu = () => setClick(false);
 
     const showButton = () => {
-        if(window.innerWidth <= 960){
+        if(window.innerWidth <= 1018){
             setButton(false);
         } else {
             setButton(true);
