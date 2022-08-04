@@ -54,9 +54,9 @@ export default function Home() {
       .then(res => res.json())
       .then(pics => {
         if(photo === "Denver"){
-          setBg(pics.results[Math.floor(Math.random() * 9) + 1].urls.regular)
+          setBg(pics.results[Math.floor(Math.random() * 9) + 1].urls.small)
         }else if(photo == search){
-          setBg(pics.results[Math.floor(Math.random() * 9) + 1].urls.regular) 
+          setBg(pics.results[Math.floor(Math.random() * 9) + 1].urls.small) 
         }
         //setBackState(pics)
         console.log(pics)

@@ -1,0 +1,16 @@
+.contain {
+    color: white;
+    display: flex;
+    justify-content: right;
+}
+
+.form--card {
+    background: white;
+    display: flex;;
+    width: 35%;
+    height: 200px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 20px;
+
+}

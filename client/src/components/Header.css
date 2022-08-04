@@ -17,6 +17,7 @@
 }
 
 .logo {
+    color: white;
     justify-self: start;
     text-decoration: none;
     font-size: 2rem;
@@ -36,6 +37,7 @@
 }
   
 .nav-links {
+    color: white;
     display: flex;
     align-items: center;
     text-decoration: none;
