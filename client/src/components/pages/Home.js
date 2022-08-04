@@ -13,14 +13,14 @@ import './Home.css'
     min-width: 100%;
 }*/
 
-const page = Math.floor(Math.random() * 100) + 1
+const page = Math.floor(Math.random() * 20) + 1
 
 
 export default function Home() {
   const [weather, setWeather] = useState({});
   const [city, setCity] = useState("Denver");
   const [bg, setBg] = useState("");
-  const [backState, setBackState] = useState("");
+  //const [backState, setBackState] = useState("");
   const [search, setSearch] = useState("");
   const [photo, setPhoto] = useState("Denver")
 
@@ -53,16 +53,18 @@ export default function Home() {
     fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${photo}&client_id=7dNP4Ri3043iEDptPjB64Ik8FlEZTD8KH6Mz-dT_-Ho`)
       .then(res => res.json())
       .then(pics => {
-        setBg(pics.results[Math.floor(Math.random() * 9) + 1].urls.regular)
-        setBackState(pics)
+        if(photo === "Denver"){
+          setBg(pics.results[Math.floor(Math.random() * 9) + 1].urls.regular)
+        }else if(photo == search){
+          setBg(pics.results[Math.floor(Math.random() * 9) + 1].urls.regular) 
+        }
+        //setBackState(pics)
         console.log(pics)
       })
   }, [photo])
 
   return (
-    <div className='weather' style={ photo === "Denver" ? ({
-      backgroundImage: `url('${bg}')`
-      }) : ({backgroundImage: `url('${backState.results[Math.floor(Math.random() * 9) + 1].urls.regular}')`})}>
+    <div className='weather' style={ { background: `url('${bg}')` }} >
       <div className='card'>
         <form onSubmit={handleSubmit}>
         <input onChange={handleChange} type='search'/>
