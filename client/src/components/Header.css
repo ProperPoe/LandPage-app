@@ -99,6 +99,7 @@
     }
 
     .menu-icon {
+        color: white;
         display: block;
         position: absolute;
         top: 0;
