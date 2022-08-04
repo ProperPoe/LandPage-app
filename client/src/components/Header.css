@@ -1,5 +1,5 @@
 .header {
-    background-color: aqua;
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,7 +90,7 @@
 
     .nav-links:hover {
         background-color: fff;
-        color: #242424;
+        color: red;
         border-radius: 0;
     }
 
