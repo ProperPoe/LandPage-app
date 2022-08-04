@@ -1,0 +1,5 @@
+.flights {
+    background: url("https://images.unsplash.com/photo-1659394754299-26e8172a1d79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTIyMTR8MHwxfGFsbHwyfHx8fHx8Mnx8MTY1OTU2MzAxMw&ixlib=rb-1.2.1&q=80&w=1080") center center/cover no-repeat;
+    height: 110vh;
+    width: 100%;
+}

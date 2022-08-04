@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {v4 as uuid} from 'uuid'
+import './Contact.css'
 
 export default function Contact() {
   /*const [flights, setFlights] = useState([]);
@@ -15,7 +16,8 @@ export default function Contact() {
   console.log(flights)*/
 
   return (
-    <div>
+    <div className='flights'>
+      <div>dang</div>
       {/*<input type='text' />
       <button>Search</button>
       {flights.map((x) => <div key={uuid()}>Arrivals: {String(x.arrival.airport).toUpperCase()} {x.arrival.estimated}</div>)}

@@ -1,0 +1,16 @@
+.weather {
+    height: 100vh;
+    width: 100;
+    background-size: cover;
+}
+
+.card {
+    background: white;
+    border-radius: 30px;
+    padding: 2em;
+}
+
+.weather--display {
+    display: flex;
+    flex-direction: column;
+}
