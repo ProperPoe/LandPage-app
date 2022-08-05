@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Experiences.css'
 
 function Experiences() {
+    const [location, setLocation] = useState(['whoa', 'hey'])
     return (
         <>
         <div className='form--contain'>
@@ -11,6 +12,7 @@ function Experiences() {
                     <button>Submit</button>
                 </form>
             </div>
+            {location.map((x) => <div className='card'>{x}</div>)}
         </div>
         </>
     )
