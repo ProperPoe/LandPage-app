@@ -1,4 +1,6 @@
-import ExperiencesModel from "../models/Experiences";
+const express = require('express');
+const mongoose = require('mongoose');
+const ExperiencesModel = require("../models/Experiences");
 
 const router = express.Router();
 

@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const UserModel = require('./models/Users');
 const cors = require('cors');
 const userRoutes = require('./routes/users')
+const experienceRoutes = require('./routes/experiences')
 
 const app = express();
 dotenv.config();
@@ -13,6 +14,7 @@ app.use(cors());
 
 //middelware used to connect routes
 app.use('/', userRoutes)
+app.use('/', experienceRoutes)
 
 mongoose.connect(process.env.CONNECT)
 
