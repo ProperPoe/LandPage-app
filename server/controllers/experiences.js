@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const ExperiencesModel = require("../models/Experiences");
+const ExperiencesModel = require("../models/Experiences.js");
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ exports.getExperiences = (req, res) => {
 
 exports.createExperience = async (req, res) => {
     const experience = req.body;
-    const newEx =  ExperiencesModel;
+    const newEx = new ExperiencesModel(experience);
     await newEx.save();
 
     res.json(experience)

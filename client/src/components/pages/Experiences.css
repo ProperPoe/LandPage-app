@@ -15,9 +15,14 @@
 
 }
 
-.card {
+.experience--container{
+    display: flex;
+} 
+
+.experience--card {
     background: white;
     display: flex;
+    flex-direction: row;
     width: 25%;
     height: 200px;
     margin-left: 30px;
