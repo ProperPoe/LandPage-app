@@ -1,18 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Home.css'
 
-/*
-.weather {
-    background: url("https://images.unsplash.com/photo-1657299143482-4f4ea1ebd71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTIyMTR8MXwxfGFsbHwxfHx8fHx8Mnx8MTY1OTU2MzM4OA&ixlib=rb-1.2.1&q=80&w=1080") center center/cover no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    min-width: 100%;
-}*/
-
 const page = Math.floor(Math.random() * 20) + 1
 
 
