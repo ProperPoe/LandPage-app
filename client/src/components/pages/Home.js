@@ -28,7 +28,7 @@ export default function Home() {
  
 
   useEffect(() => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=d9cb7c339605afd51ef5359009424a5a`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.REACT_APP_WEATHER}`)
       .then(resp => resp.json())
       .then(data => {
         setWeather(data)
@@ -50,13 +50,13 @@ export default function Home() {
   }
 
   useEffect(() => {
-    fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${photo}&client_id=7dNP4Ri3043iEDptPjB64Ik8FlEZTD8KH6Mz-dT_-Ho`)
+    fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${photo}&client_id=${process.env.REACT_APP_BG}`)
       .then(res => res.json())
       .then(pics => {
         if(photo === "Denver"){
-          setBg(pics.results[Math.floor(Math.random() * 9) + 1].urls.small)
+          setBg(pics.results[Math.floor(Math.random() * 9) + 1].urls.raw)
         }else if(photo == search){
-          setBg(pics.results[Math.floor(Math.random() * 9) + 1].urls.small) 
+          setBg(pics.results[Math.floor(Math.random() * 9) + 1].urls.raw) 
         }
         //setBackState(pics)
         console.log(pics)
@@ -64,7 +64,7 @@ export default function Home() {
   }, [photo])
 
   return (
-    <div className='weather' style={ { background: `url('${bg}')` }} >
+    <div className='weather' style={ { backgroundImage: `url('${bg}')`, height: '100vh', backgroundPosition: "center center", backgroundSize: "cover", backgroundRepeat: "no-repeat", width: "100%", display: "flex", justifyContent: "center", alignItems: "center"}} >
       <div className='card'>
         <form onSubmit={handleSubmit}>
         <input onChange={handleChange} type='search'/>

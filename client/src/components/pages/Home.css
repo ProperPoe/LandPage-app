@@ -1,16 +1,14 @@
-.weather {
-    height: 200vh;
-    width: 100%;
-    background-size: cover;
-}
-
 .card {
-    background: white;
+    background-color: black;
     border-radius: 30px;
+    opacity: .6;
     padding: 2em;
+    position: fixed;
+    width: 284px;
 }
 
 .weather--display {
+    color: white;
     display: flex;
     flex-direction: column;
 }
