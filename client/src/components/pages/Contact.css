@@ -2,4 +2,47 @@
     background: url("https://images.unsplash.com/photo-1659394754299-26e8172a1d79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTIyMTR8MHwxfGFsbHwyfHx8fHx8Mnx8MTY1OTU2MzAxMw&ixlib=rb-1.2.1&q=80&w=1080") center center/cover no-repeat;
     height: 110vh;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flightCard-container {
+    border-radius: 20px;
+    background-color: black;
+    width: 500px;
+    height: 300px;
+    opacity: .8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flight-info {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 219px;
+}
+
+.airport-container {
+    text-align: center;
+}
+
+.airport {
+    font-weight: bold;
+}
+
+.flight-city {
+    font-weight: lighter;
+}
+
+.time-container {
+    text-align: center;
+}
+
+.time {
+    font-weight: bold;
 }

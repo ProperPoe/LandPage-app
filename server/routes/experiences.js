@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { getExperiences, createExperience } = require('../controllers/experiences.js');
+const { getExperiences, createExperience, updatePost } = require('../controllers/experiences.js');
 
 const router = express.Router();
 
