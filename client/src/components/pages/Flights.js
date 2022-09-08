@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {v4 as uuid} from 'uuid'
-import './Contact.css'
+import './Flights.css'
 
-export default function Contact() {
+export default function Flights() {
   const [flights, setFlights] = useState([]);
   const [departAirport, setDepartAirport] = useState("")
   const [departTime, setDepartTime] = useState("")
