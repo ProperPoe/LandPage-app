@@ -38,10 +38,8 @@ export default function Header() {
                 <li className='nav-item'><Link to="/" className='nav-links' onClick={closeMobileMenu}>Home</Link></li>
                 <li className='nav-item'><Link to="/contact" className='nav-links' onClick={closeMobileMenu}>Contact</Link></li>
                 <li className='nav-item'><Link to="/experiences" className='nav-links' onClick={closeMobileMenu}>Experiences</Link></li>
-                <li className='nav-item'><Link to="/login" className='nav-links-mobile' onClick={closeMobileMenu}>Login</Link></li>
                 <li className='nav-item'><Link to="/sign-up" className='nav-links-mobile' onClick={closeMobileMenu}>Sign Up</Link></li>
             </ul>
-            {button && <LoginBtn buttonStyle='btn--outline'>LOGIN</LoginBtn>}
             {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
         </div>
         
