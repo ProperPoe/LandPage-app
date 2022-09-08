@@ -3,7 +3,9 @@ import {v4 as uuid} from 'uuid'
 import './Flights.css'
 
 export default function Flights() {
+  const [inputVal, setInputVal] = useState("")
   const [flights, setFlights] = useState([]);
+  const [index, setIndex] = useState(null)
   const [departAirport, setDepartAirport] = useState("")
   const [departTime, setDepartTime] = useState("")
   const [arriveAirport, setArriveAirport] = useState("")
@@ -13,19 +15,38 @@ export default function Flights() {
     fetch(`http://api.aviationstack.com/v1/flights?access_key=${process.env.REACT_APP_FLIGHT}`)
       .then(resp => resp.json())
       .then(data => {
-        /*setDepartAirport(data.data[0].departure.airport)
-        setDepartTime(data.data[0].departure.estimated)
-        setArriveAirport(data.data[0].arrival.airport)
-        setArriveTime(data.data[0].arrival.estimated)*/
+        setFlights(data.data)   
       })
   }, [])
+
+  const handleChange = (e) => {
+    setInputVal(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    flights.forEach((flight, index) => {
+      if(flight.flight.number === inputVal){
+        setDepartAirport(flights[index].departure.airport)
+        setDepartTime(flights[index].departure.estimated)
+        setArriveAirport(flights[index].arrival.airport)
+        setArriveTime(flights[index].arrival.estimated)
+      }
+    })
+
+    
+
+  }
 
   return (
     <div className='flights'>
       <div className='flightCard-container'>
         <div>
-          <input type='text' />
-          <button>Search</button>
+          <form onSubmit={handleSubmit}>
+            <input onChange={handleChange} type='text' />
+            <button type='submit'>Search</button>
+          </form>
         </div>
         <div className='flight-info'>
           <div className='flight-listings'>
@@ -51,8 +72,6 @@ export default function Flights() {
             </div>
           </div>  
         </div>
-        {/*{flights.map((x) => <div key={uuid()}>Arrivals: {String(x.arrival.airport).toUpperCase()} {x.arrival.estimated}</div>)}
-        {flights.map((x) => <div key={uuid()}>Departures: {String(x.departure.airport).toUpperCase()} {x.departure.estimated}</div>)}*/}
       </div>
     </div>
   )

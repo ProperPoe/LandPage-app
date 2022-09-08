@@ -20,7 +20,7 @@
     flex-wrap: wrap;
 } 
 
-.experience--card {
+/*.experience--card {
     background: #ffffff;
     display: flex;
     flex-direction: column;
@@ -31,6 +31,10 @@
     margin-right: 30px;
     margin-top: 20px;
     position: relative;
+}*/
+
+.likeBtnContainer-hidden {
+    display: none;
 }
 
 .likeBtnContainer {
@@ -61,6 +65,10 @@
     display: flex;
     justify-content: center;
     padding: 0.4rem;
+}
+
+.condRender {
+    cursor: pointer;
 }
 
 

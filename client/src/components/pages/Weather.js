@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import './Home.css'
+import './Weather.css'
 
 const page = Math.floor(Math.random() * 20) + 1
 
 
-export default function Home() {
+export default function Weather() {
   const [weather, setWeather] = useState({});
   const [city, setCity] = useState("Denver");
   const [bg, setBg] = useState("");

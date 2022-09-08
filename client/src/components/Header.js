@@ -35,7 +35,7 @@ export default function Header() {
                 <FontAwesomeIcon icon={click ? faTimes : faBars} />
             </div>
             <ul className={click ? 'nav-text active' : 'nav-text'}>
-                <li className='nav-item'><Link to="/" className='nav-links' onClick={closeMobileMenu}>Home</Link></li>
+                <li className='nav-item'><Link to="/" className='nav-links' onClick={closeMobileMenu}>Weather</Link></li>
                 <li className='nav-item'><Link to="/flights" className='nav-links' onClick={closeMobileMenu}>Flights</Link></li>
                 <li className='nav-item'><Link to="/experiences" className='nav-links' onClick={closeMobileMenu}>Experiences</Link></li>
                 <li className='nav-item'><Link to="/sign-up" className='nav-links-mobile' onClick={closeMobileMenu}>Sign Up</Link></li>
