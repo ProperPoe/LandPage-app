@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <nav className='header'>
         <div className='nav-container'>
-            <Link to="/" className="logo" onClick={closeMobileMenu}><h1>My Page</h1></Link>
+            <Link to="/" className="logo" onClick={closeMobileMenu}><h1>Travel Prep</h1></Link>
             <div className='menu-icon' onClick={handleClick}>
                 <FontAwesomeIcon icon={click ? faTimes : faBars} />
             </div>
