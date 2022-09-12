@@ -19,5 +19,24 @@ exports.createExperience = async (req, res) => {
     const newEx = new ExperiencesModel(experience);
     await newEx.save();
 
-    res.json(experience)
+    res.json(newEx)
+}
+
+exports.likePost = async (req, res) => {
+    const id = req.params.id;
+
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const listExperience = await ExperiencesModel.findById(id);
+
+    if(listExperience.likeCount === 0){
+        listExperience.likeCount += 1;
+    }else if(listExperience.likeCount > 0){
+        listExperience.likeCount = 0;
+    }
+    
+
+    await listExperience.save();
+    
+    res.json(listExperience)
 }

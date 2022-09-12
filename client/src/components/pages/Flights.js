@@ -19,6 +19,8 @@ export default function Flights() {
       })
   }, [])
 
+  console.log(flights)
+
   const handleChange = (e) => {
     setInputVal(e.target.value)
   }

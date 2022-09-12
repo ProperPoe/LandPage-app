@@ -5,6 +5,13 @@ const ExperiencesSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    image: {
+        type: String,
+    },
+    likeCount: {
+        type: Number,
+        default: 0,
+    },
 })
 
 const ExperiencesModel = mongoose.model('experiences', ExperiencesSchema);
