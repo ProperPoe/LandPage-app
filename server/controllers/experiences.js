@@ -27,13 +27,14 @@ exports.likePost = async (req, res) => {
 
     if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const listExperience = await ExperiencesModel.findById(id);
+    const listExperience = await ExperiencesModel.findByIdAndUpdate(id);
 
-    if(listExperience.likeCount === 0){
+    /*if(listExperience.likeCount === 0){
         listExperience.likeCount += 1;
     }else if(listExperience.likeCount > 0){
         listExperience.likeCount = 0;
-    }
+    }*/
+    listExperience.likeCount += 1;
     
 
     await listExperience.save();
@@ -49,8 +50,8 @@ exports.deletePost = async (req, res) => {
 }
 
 exports.getPost = async (req, res) => {
+    const id = req.params.id;
     const singlePost = await ExperiencesModel.findById(id);
-    const filterSingePost = singlePost.filter((post) => post.id === req.params.id);
 
-    res.send(filterSingePost)
+    res.send(singlePost)
 }

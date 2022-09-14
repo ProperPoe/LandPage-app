@@ -3,6 +3,9 @@
    display: flex;
     justify-content: right;
 }*/
+.form-contain-hidden{
+    display: none;
+}
 
 .form--card {
     background: white;
@@ -19,6 +22,10 @@
     display: flex;
     flex-wrap: wrap;
 } 
+
+.experience-contain-hidden{
+    display: none;
+}
 
 /*.experience--card {
     background: #ffffff;
@@ -83,6 +90,14 @@
 
 .condRender {
     cursor: pointer;
+}
+
+.view-hidden{
+    display: none;
+}
+
+.image-hidden {
+    display: none;
 }
 
 
