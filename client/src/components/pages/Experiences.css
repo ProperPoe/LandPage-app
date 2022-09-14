@@ -45,7 +45,21 @@
     left: 0;
 }
 
+.deleteBtn{
+    margin-top: 10px;
+    padding: 2px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
 .likeBtn {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.deleteBtn {
     background-color: transparent;
     border: 0;
     cursor: pointer;

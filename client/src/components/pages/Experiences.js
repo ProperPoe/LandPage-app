@@ -8,8 +8,8 @@ function Experiences() {
     const [location, setLocation] = useState("")
     const [likes, setLikes] = useState(0)
     const [liked, setLiked] = useState(false)
-    const [likeCount, setLikeCount] = useState(0)
     const [picClicked, setPickClicked] = useState(false)
+    const [viewLocation, setViewLocation] = ("")
 
     const createExperience = (e) => {
         e.preventDefault();
@@ -17,23 +17,27 @@ function Experiences() {
         Axios.post('http://localhost:9001/', {location})
             .then((response) => {
                 setListExperience([...listExperience,{_id: response.data._id, location, likeCount: response.data.likeCount}]);
-                console.log(response.data._id)
-            })
+            })  
     }    
+    let initLikes = new Array(listExperience.length).fill(0)
+    console.log(initLikes)
  
-
-    const updateLike = (id) => {
+    const updateLike = (id, x) => {
+        let tempLikes = initLikes.slice();
+        console.log(tempLikes[x])
+        console.log(x)
         Axios.put(`http://localhost:9001/${id}/likePost`)
-            .then(
-                (response) => {
+            .then((response) => {
                     setListExperience((previous) => {
                         return previous.map((hmm) => {
                             return hmm.id === id ? id : hmm
                         })
                     })
                     setLiked(true)
-                    setLikes(response.data.likeCount)
-                    console.log(response.data.likeCount)
+                    /*let tempLikes = initLikes;*/
+                    tempLikes[x] = tempLikes[x] + response.data.likeCount
+                    setLikes(tempLikes)
+                    
                 }
             )
     }
@@ -42,10 +46,18 @@ function Experiences() {
         Axios.get('http://localhost:9001/')
             .then((response) => {
                 setListExperience(response.data)
-                console.log(response.data)
             })
     }, []);
 
+
+    const deletePost = (id) => {
+        Axios.delete(`http://localhost:9001/${id}/delete`)
+            .then(() => {
+                setListExperience(listExperience.filter((idx) => {
+                    return idx._id != id
+                }))
+            })
+    }
     
     const cardStyles = {
         background: "#ffffff",
@@ -77,11 +89,14 @@ return (
                             {x.location}
                         </div>
                         <div className='image' style={ { display: "flex", justifyContent: "center"} } >
-                            <img src={Space} alt='pic' style={ { maxWidth: "100%", maxHeight:"100%", overflow: "hidden", marginBottom: "20px"} } height={125} />
+                                <img src={Space} alt='pic' style={ { maxWidth: "100%", maxHeight:"100%", overflow: "hidden", marginBottom: "20px"} } height={125} />
                         </div> 
                         
                         <div className={picClicked === true ?'likeBtnContainer-hidden' : 'likeBtnContainer'}>
-                            <button className='likeBtn' type='button' onClick={() => updateLike(x._id)}>Like {liked === true ? likes : x.likeCount}</button>
+                            <button className='likeBtn' type='button' onClick={() => updateLike(x._id, id)}>Like {liked === true ? likes[id] : x.likeCount}</button>
+                        </div>
+                        <div className='deleteBtnContainer'>
+                            <button className='deleteBtn' type='button' onClick={() => deletePost(x._id)}>Delete</button>
                         </div>
                     </div>
             )}

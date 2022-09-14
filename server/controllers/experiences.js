@@ -40,3 +40,17 @@ exports.likePost = async (req, res) => {
     
     res.json(listExperience)
 }
+
+exports.deletePost = async (req, res) => {
+    const id = req.params.id;
+    await ExperiencesModel.findByIdAndRemove(id).exec();
+
+    res.send('deleteSuccess')
+}
+
+exports.getPost = async (req, res) => {
+    const singlePost = await ExperiencesModel.findById(id);
+    const filterSingePost = singlePost.filter((post) => post.id === req.params.id);
+
+    res.send(filterSingePost)
+}
