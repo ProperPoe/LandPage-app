@@ -5,9 +5,7 @@ const ExperiencesSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    image: {
-        type: String,
-    },
+    image: String,
     likeCount: {
         type: Number,
         default: 0,

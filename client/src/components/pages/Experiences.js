@@ -3,20 +3,23 @@ import './Experiences.css'
 import Axios from 'axios';
 import ExperienceLikes from './ExperienceLikes';
 import ExperienceView from './ExperienceView';
+import FileBase64 from 'react-file-base64';
 
 function Experiences() {
     const [listExperience, setListExperience] = useState([]);
     const [location, setLocation] = useState("")
+    const [image, setImage] = useState("")
     const [picClicked, setPickClicked] = useState(false)
     const [viewId, setViewId] = useState(null)
     const [viewLocation, setViewLocation] = useState("")
+    const [viewImage, setViewImage] = useState("")
 
     const createExperience = (e) => {
         e.preventDefault();
 
-        Axios.post('http://localhost:9001/', {location})
+        Axios.post('http://localhost:9001/', {location, image})
             .then((response) => {
-                setListExperience([...listExperience,{_id: response.data._id, location, likeCount: response.data.likeCount}]);
+                setListExperience([...listExperience,{_id: response.data._id, location, image, likeCount: response.data.likeCount}]);
             })  
     }    
 
@@ -33,6 +36,7 @@ function Experiences() {
         await Axios.get(`http://localhost:9001/${id}/getPost`)
             .then((response) => {
                 setViewLocation(response.data.location)
+                setViewImage(response.data.image)
             }
             )
     }
@@ -43,14 +47,15 @@ return (
         <div className='form--card'>
             <form onSubmit={createExperience}>
                 <textarea type='text' onChange={(event) => {setLocation(event.target.value)}} />
+                <FileBase64 multiple={false} onDone={({base64}) => setImage(base64)} />
                 <button type='submit'>Submit</button>
             </form>
         </div>
     </div>    
     <div className={picClicked === true ? 'experience-contain-hidden' : 'experience--container'}>
-        <ExperienceLikes setListExperience={setListExperience} picClicked={picClicked} setPickClicked={setPickClicked} listExperience={listExperience} viewPost={viewPost} />
+        <ExperienceLikes setListExperience={setListExperience} picClicked={picClicked} setPickClicked={setPickClicked} listExperience={listExperience} viewPost={viewPost} image={image} />
     </div>
-    <ExperienceView picClicked={picClicked} setPickClicked={setPickClicked} viewPost={viewPost} id={viewId} viewLocation={viewLocation}/>
+    <ExperienceView picClicked={picClicked} setPickClicked={setPickClicked} viewPost={viewPost} id={viewId} viewLocation={viewLocation} viewImage={viewImage} />
     </>
 )
 }

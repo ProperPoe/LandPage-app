@@ -4,12 +4,12 @@ import Axios  from 'axios';
 import ExperienceView from './ExperienceView';
 import Space from './images/space.jpg'
 
-function ExperienceLikes({setListExperience, listExperience, picClicked ,setPickClicked, viewPost}) {
-    let initLikes = new Array(listExperience.length).fill(0)
-    const [likes, setLikes] = useState(initLikes)
+function ExperienceLikes({setListExperience, listExperience, picClicked ,setPickClicked, viewPost, image}) {
+    //let initLikes = new Array(listExperience.length).fill(0)
+    //const [likes, setLikes] = useState(initLikes)
     const [liked, setLiked] = useState(false)
 
-    console.log(initLikes)
+    //console.log(initLikes)
 
     const cardStyles = {
         background: "#ffffff",
@@ -25,17 +25,18 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
     }
 
     const updateLike = (id, idx) => {
-        let tempLikes = initLikes;
+        let tempLikes = listExperience[idx];
         Axios.put(`http://localhost:9001/${id}/likePost`)
             .then((response) => {
                     setListExperience((previous) => {
                         return previous.map((hmm) => {
-                            return hmm.id === id ? id : hmm
+                            return hmm._id === id ? {...hmm, likeCount: response.data.likeCount} : hmm
                         })
                     })
-                    setLiked(true)
-                    tempLikes[idx] = response.data.likeCount
-                    setLikes(tempLikes)
+                    
+                    //setLiked(true)
+                    //tempLikes[idx] = response.data.likeCount
+                    //setLikes(tempLikes)
                     
                 }
             )
@@ -60,11 +61,11 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
                                 {x.location}
                             </div>
                             <div className={picClicked === true ?'image-hidden' : 'image'} style={ { display: "flex", justifyContent: "center"} } >
-                                <img src={Space} alt='pic' style={ { maxWidth: "100%", maxHeight:"100%", overflow: "hidden", marginBottom: "20px"} } height={125} />
+                                <img src={x.image} alt='pic' style={ { width: "100%", maxHeight:"100%", overflow: "hidden", marginBottom: "20px"} } height={125} />
                             </div> 
                         </div>
                         <div className={picClicked === true ?'likeBtnContainer-hidden' : 'likeBtnContainer'}>
-                            <button className='likeBtn' type='button' onClick={() => updateLike(x._id, id)}>Like {liked === false ? x.likeCount : likes[id]}</button>
+                            <button className='likeBtn' type='button' onClick={() => updateLike(x._id, id)}>Like {x.likeCount}</button>
                         </div>
                         <div className='deleteBtnContainer'>
                             <button className='deleteBtn' type='button' onClick={() => deletePost(x._id)}>Delete</button>
