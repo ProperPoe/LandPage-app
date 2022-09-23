@@ -20,6 +20,7 @@ function Experiences() {
         Axios.post('http://localhost:9001/', {location, image})
             .then((response) => {
                 setListExperience([...listExperience,{_id: response.data._id, location, image, likeCount: response.data.likeCount}]);
+                console.log(response)
             })  
     }    
 
@@ -46,13 +47,13 @@ return (
     <div className={picClicked === true ? 'form-contain-hidden' : 'form--contain'}>
         <div className='form--card'>
             <form onSubmit={createExperience}>
-                <textarea type='text' onChange={(event) => {setLocation(event.target.value)}} />
+                <textarea type='text' placeholder='Enter a location...' onChange={(event) => {setLocation(event.target.value)}} />
                 <FileBase64 multiple={false} onDone={({base64}) => setImage(base64)} />
                 <button type='submit'>Submit</button>
             </form>
         </div>
     </div>    
-    <div className={picClicked === true ? 'experience-contain-hidden' : 'experience--container'}>
+    <div className={picClicked === false ? 'experience--container' : 'experience-contain-hidden'}>
         <ExperienceLikes setListExperience={setListExperience} picClicked={picClicked} setPickClicked={setPickClicked} listExperience={listExperience} viewPost={viewPost} image={image} />
     </div>
     <ExperienceView picClicked={picClicked} setPickClicked={setPickClicked} viewPost={viewPost} id={viewId} viewLocation={viewLocation} viewImage={viewImage} />

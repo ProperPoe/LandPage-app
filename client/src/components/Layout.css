@@ -1,3 +1,24 @@
 body {
     background-color: gray;
 }
+
+.layout{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+}
+
+.layout form {
+        background-color: aqua;
+        border-radius: 20px;
+        box-shadow: 10px 10px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10%;
+        height: 300px;
+        width: 500px;
+    
+}

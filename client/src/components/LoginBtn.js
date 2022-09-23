@@ -19,7 +19,7 @@ export const LoginBtn = ({
 
     return (
         <div>
-            <Link to='/login' className='btn-mobile'>
+            <Link to='/sign-up' className='btn-mobile'>
                 <button className={`btn ${checkButtonStyle} ${checkButtonSize}`} onClick={onClick} type={type}>
                     {children}
                 </button>

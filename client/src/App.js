@@ -6,6 +6,7 @@ import Weather from "./components/pages/Weather";
 import Flights from "./components/pages/Flights";
 import Experiences from "./components/pages/Experiences";
 import SignUp from "./components/pages/SignUp";
+import Login from "./components/pages/Login"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' exact element={<Weather />} />
           <Route path='/flights' exact element={<Flights />} />
           <Route path='/Experiences' exact element={<Experiences />} />
+          <Route path='/login' element={<Login />} />
           <Route path='/sign-up' element={<SignUp />} />
         </Routes>
       </Router>

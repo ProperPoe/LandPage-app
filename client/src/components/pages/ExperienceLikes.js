@@ -5,27 +5,20 @@ import ExperienceView from './ExperienceView';
 import Space from './images/space.jpg'
 
 function ExperienceLikes({setListExperience, listExperience, picClicked ,setPickClicked, viewPost, image}) {
-    //let initLikes = new Array(listExperience.length).fill(0)
-    //const [likes, setLikes] = useState(initLikes)
-    const [liked, setLiked] = useState(false)
-
-    //console.log(initLikes)
-
     const cardStyles = {
         background: "#ffffff",
+        boxShadow: "0px 10px 30px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        width: "161px",
-        height: "180px",
+        width: "300px",
+        height: "300px",
         marginLeft: "30px",
-        marginRight: "30px",
         marginTop: "20px",
         position: "relative",
     }
 
-    const updateLike = (id, idx) => {
-        let tempLikes = listExperience[idx];
+    const updateLike = (id) => {
         Axios.put(`http://localhost:9001/${id}/likePost`)
             .then((response) => {
                     setListExperience((previous) => {
@@ -33,11 +26,6 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
                             return hmm._id === id ? {...hmm, likeCount: response.data.likeCount} : hmm
                         })
                     })
-                    
-                    //setLiked(true)
-                    //tempLikes[idx] = response.data.likeCount
-                    //setLikes(tempLikes)
-                    
                 }
             )
     }
@@ -54,22 +42,25 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
 
     return(
         <>
-        {listExperience.map((x, id) => 
-                    <div key={x._id} className={`experience--card$`} style={cardStyles}>
-                        <div onClick={() => {viewPost(x._id)}}>
+        {listExperience.map((post, id) => 
+                    <div key={post._id} className={`experience--card$`} style={cardStyles}>
+                        <div className='card-container' onClick={() => {viewPost(post._id)}}>
                             <div className='locate'>
-                                {x.location}
+                                {post.location}
                             </div>
                             <div className={picClicked === true ?'image-hidden' : 'image'} style={ { display: "flex", justifyContent: "center"} } >
-                                <img src={x.image} alt='pic' style={ { width: "100%", maxHeight:"100%", overflow: "hidden", marginBottom: "20px"} } height={125} />
+                                <img src={post.image} alt='pic' style={ { width: "100%", height: "254px", maxHeight:"100%", overflow: "hidden", marginBottom: "20px"} } height={125} />
                             </div> 
                         </div>
-                        <div className={picClicked === true ?'likeBtnContainer-hidden' : 'likeBtnContainer'}>
-                            <button className='likeBtn' type='button' onClick={() => updateLike(x._id, id)}>Like {x.likeCount}</button>
+                        <div className='what'>
+                            <div className={picClicked === true ?'likeBtnContainer-hidden' : 'likeBtnContainer'}>
+                                <button key={id} className='likeBtn' type='button' onClick={() => updateLike(post._id)}>Like {post.likeCount}</button>
+                            </div>
+                            <div className='deleteBtnContainer'>
+                                <button className='deleteBtn' type='button' onClick={() => deletePost(post._id)}>Delete</button>
+                            </div>
                         </div>
-                        <div className='deleteBtnContainer'>
-                            <button className='deleteBtn' type='button' onClick={() => deletePost(x._id)}>Delete</button>
-                        </div>
+                        
                     </div>
             )}
         </>

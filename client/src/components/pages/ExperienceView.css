@@ -1,0 +1,23 @@
+.view-header {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.view-header button{
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 2.5rem;
+    position: absolute;
+    right: 0;
+}
+
+.view-image {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}

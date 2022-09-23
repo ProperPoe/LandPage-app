@@ -38,9 +38,9 @@ export default function Header() {
                 <li className='nav-item'><Link to="/" className='nav-links' onClick={closeMobileMenu}>Weather</Link></li>
                 <li className='nav-item'><Link to="/flights" className='nav-links' onClick={closeMobileMenu}>Flights</Link></li>
                 <li className='nav-item'><Link to="/experiences" className='nav-links' onClick={closeMobileMenu}>Experiences</Link></li>
-                <li className='nav-item'><Link to="/sign-up" className='nav-links-mobile' onClick={closeMobileMenu}>Sign Up</Link></li>
+                <li className='nav-item'><Link to="/login" className='nav-links-mobile' onClick={closeMobileMenu}>Sign In</Link></li>
             </ul>
-            {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+            {button && <Button buttonStyle='btn--outline'>SIGN IN</Button>}
         </div>
         
     </nav>

@@ -51,9 +51,9 @@ export default function Flights() {
           </form>
         </div>
         <div className='flight-info'>
-          <div className='flight-listings'>
+          <div className='flight-listings-departing'>
             <h2>Departing</h2>
-            <div className='airport-container'>
+            <div className='airport-container-depart'>
               <div className='airport'>AIRPORT:</div>
               <div className='flight-city'>{departAirport ? departAirport : ""}</div>
             </div>
@@ -62,9 +62,9 @@ export default function Flights() {
               <div>{departTime ? departTime : ""}</div>
             </div>
           </div>
-          <div className='flight-listings'>
+          <div className='flight-listings-arriving'>
             <h2>Arriving</h2>
-            <div className='airport-container'>
+            <div className='airport-container-arrive'>
               <div className='airport'>AIRPORT:</div>
               <div className='flight-city'>{arriveAirport ? arriveAirport : ""}</div>
             </div>

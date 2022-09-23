@@ -10,6 +10,10 @@ const ExperiencesSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "users",
+    },
 })
 
 const ExperiencesModel = mongoose.model('experiences', ExperiencesSchema);

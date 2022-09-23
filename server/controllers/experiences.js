@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const ExperiencesModel = require("../models/Experiences.js");
+const UserModel = require('../models/Users.js');
 
 const router = express.Router();
 
@@ -15,11 +16,29 @@ exports.getExperiences = (req, res) => {
 }
 
 exports.createExperience = async (req, res) => {
-    const experience = req.body;
-    const newEx = new ExperiencesModel(experience);
-    await newEx.save();
+    const {location, image, likeCount} = req.body;
 
+    /*let existingUser;
+    try {
+        existingUser = UserModel.findById(user)
+    } catch (err) {
+        console.log(err)
+    }*/
+    const newEx = new ExperiencesModel({location, image, likeCount});
+    /*try {
+        const session = await mongoose.startSession();
+        session.startTransaction();
+        await newEx.save({session});
+        existingUser.posts.push(newEx);
+        await existingUser.save({session});
+        await session.commitTransaction();
+    } catch (err) {
+        console.log(err)
+    }*/
+    await newEx.save();
+    
     res.json(newEx)
+    
 }
 
 exports.likePost = async (req, res) => {

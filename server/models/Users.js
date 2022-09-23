@@ -5,14 +5,16 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    age: {
-        type: Number,
-        required: true,
-    },
-    username: {
+    email: {
         type: String,
         required: true,
-    }
+        unique: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    posts:[{type: mongoose.Schema.Types.ObjectId, ref: "experiences", required: true}],
 })
 
 const UserModel = mongoose.model("users", UserSchema);
