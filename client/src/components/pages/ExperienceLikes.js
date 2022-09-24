@@ -4,7 +4,7 @@ import Axios  from 'axios';
 import ExperienceView from './ExperienceView';
 import Space from './images/space.jpg'
 
-function ExperienceLikes({setListExperience, listExperience, picClicked ,setPickClicked, viewPost, image}) {
+function ExperienceLikes({setListExperience, listExperience, picClicked ,setPickClicked, viewPost, image, isUser}) {
     const cardStyles = {
         background: "#ffffff",
         boxShadow: "0px 10px 30px",
@@ -35,7 +35,7 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
         Axios.delete(`http://localhost:9001/${id}/delete`)
             .then(() => {
                 setListExperience(listExperience.filter((idx) => {
-                    return idx._id != id
+                    return idx._id !== id
                 }))
             })
     }
@@ -56,9 +56,11 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
                             <div className={picClicked === true ?'likeBtnContainer-hidden' : 'likeBtnContainer'}>
                                 <button key={id} className='likeBtn' type='button' onClick={() => updateLike(post._id)}>Like {post.likeCount}</button>
                             </div>
-                            <div className='deleteBtnContainer'>
-                                <button className='deleteBtn' type='button' onClick={() => deletePost(post._id)}>Delete</button>
-                            </div>
+                            
+                                <div className='deleteBtnContainer'>
+                                    <button className='deleteBtn' type='button' onClick={() => deletePost(post._id)}>Delete</button>
+                                </div>
+                            
                         </div>
                         
                     </div>

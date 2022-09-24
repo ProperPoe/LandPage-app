@@ -112,6 +112,10 @@ textarea {
     right: 0;
 }
 
+.deleteHidden{
+    display: none;
+}
+
 .likeBtn {
     background-color: transparent;
     border: 0;

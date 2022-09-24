@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    posts:[{type: mongoose.Schema.Types.ObjectId, ref: "experiences", required: true}],
+    posts:[{type: mongoose.Types.ObjectId, ref: "experiences", required: true}],
 })
 
 const UserModel = mongoose.model("users", UserSchema);

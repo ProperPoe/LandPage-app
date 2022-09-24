@@ -3,19 +3,26 @@ import { NoteBtn } from '../NoteBtn'
 import { LoginBtn } from '../LoginBtn'
 import Axios from 'axios';
 import './Login.css'
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Login() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const updateLogin = (e) => {
+  const updateLogin = async (e) => {
     e.preventDefault();
 
-    Axios.post('http://localhost:9001/login', {email, password})
+    await Axios.post('http://localhost:9001/login', {email, password})
       .then((response) => {
-        console.log(response)
+        localStorage.setItem("userID", response.data.user._id)
       })
+      .then(() => dispatch(authActions.login()))
+      .then(() => navigate("/Experiences"))
   }
 
   return (

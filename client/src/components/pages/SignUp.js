@@ -5,9 +5,14 @@ import '../../App.css'
 import Layout from '../Layout.js'
 import './SignUp.css'
 import Display from '../Display.js'
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
     const [listOfUsers, setListOfUsers] = useState([]);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -26,11 +31,14 @@ export default function SignUp() {
         email,
         password,
       }).then((response) => {
-        console.log(response)
-      }
+          localStorage.setItem("userID", response.user.data._id)
+        })
+        .then(() => dispatch(authActions.login()))
+        .then(() => navigate("/Experiences"))
+        
         //{setListOfUsers([...listOfUsers,{name, age, username}])}
 
-      );
+      ;
     };
   return (
     <>

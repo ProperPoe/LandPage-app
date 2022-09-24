@@ -17,11 +17,11 @@ function Experiences() {
     const createExperience = (e) => {
         e.preventDefault();
 
-        Axios.post('http://localhost:9001/', {location, image})
+        Axios.post('http://localhost:9001/', {location, image, user: localStorage.getItem("userID")})
             .then((response) => {
                 setListExperience([...listExperience,{_id: response.data._id, location, image, likeCount: response.data.likeCount}]);
                 console.log(response)
-            })  
+            }).catch((err) => console.log(err))  
     }    
 
     useEffect(() => {
@@ -29,6 +29,8 @@ function Experiences() {
             .then((response) => {
                 setListExperience(response.data)
             })
+            
+        
     }, []);
 
     const viewPost = async (id) => {
@@ -54,7 +56,7 @@ return (
         </div>
     </div>    
     <div className={picClicked === false ? 'experience--container' : 'experience-contain-hidden'}>
-        <ExperienceLikes setListExperience={setListExperience} picClicked={picClicked} setPickClicked={setPickClicked} listExperience={listExperience} viewPost={viewPost} image={image} />
+        <ExperienceLikes setListExperience={setListExperience} picClicked={picClicked} setPickClicked={setPickClicked} listExperience={listExperience} viewPost={viewPost} image={image} isUser={localStorage.getItem("userID")} />
     </div>
     <ExperienceView picClicked={picClicked} setPickClicked={setPickClicked} viewPost={viewPost} id={viewId} viewLocation={viewLocation} viewImage={viewImage} />
     </>

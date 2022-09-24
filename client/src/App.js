@@ -7,8 +7,11 @@ import Flights from "./components/pages/Flights";
 import Experiences from "./components/pages/Experiences";
 import SignUp from "./components/pages/SignUp";
 import Login from "./components/pages/Login"
+import { useSelector } from "react-redux";
 
 function App() {
+  const isLoggedIn = useSelector(state => state.isLoggedIn);
+  console.log(isLoggedIn)
   return (
     <div className="App">
       <Router>
