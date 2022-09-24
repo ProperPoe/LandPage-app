@@ -14,12 +14,12 @@ function Experiences() {
     const [viewLocation, setViewLocation] = useState("")
     const [viewImage, setViewImage] = useState("")
 
-    const createExperience = (e) => {
+    const createExperience = async (e) => {
         e.preventDefault();
 
-        Axios.post('http://localhost:9001/', {location, image, user: localStorage.getItem("userID")})
+        await Axios.post('http://localhost:9001/', {location, image, user: localStorage.getItem("userID")})
             .then((response) => {
-                setListExperience([...listExperience,{_id: response.data._id, location, image, likeCount: response.data.likeCount}]);
+                setListExperience([...listExperience,{_id: response.data.newEx._id, location, image, likeCount: response.data.newEx.likeCount, user: response.data.newEx.user}]);
                 console.log(response)
             }).catch((err) => console.log(err))  
     }    
