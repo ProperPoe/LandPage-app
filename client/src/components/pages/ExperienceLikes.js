@@ -57,7 +57,7 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
                                 <button key={id} className='likeBtn' type='button' onClick={() => updateLike(post._id)}>Like {post.likeCount}</button>
                             </div>
                             
-                                <div className={isUser === post.user._id ? 'deleteBtnContainer' : 'deleteHidden'}>
+                                <div className={!post.user._id || isUser === post.user._id ? 'deleteBtnContainer' : 'deleteHidden'}>
                                     <button className='deleteBtn' type='button' onClick={() => deletePost(post._id)}>Delete</button>
                                 </div>
                             

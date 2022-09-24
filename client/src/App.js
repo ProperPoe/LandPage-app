@@ -7,11 +7,20 @@ import Flights from "./components/pages/Flights";
 import Experiences from "./components/pages/Experiences";
 import SignUp from "./components/pages/SignUp";
 import Login from "./components/pages/Login"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { authActions } from "./store";
 
 function App() {
+  const dispatch = useDispatch();
+
   const isLoggedIn = useSelector(state => state.isLoggedIn);
   console.log(isLoggedIn)
+  useEffect(()=>{
+    if(localStorage.getItem("userID")){
+      dispatch(authActions.login());
+    }
+  }, [dispatch])
   return (
     <div className="App">
       <Router>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 import { NoteBtn } from './NoteBtn' 
@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../store';
 
 export default function Header() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const isLoggedIn = useSelector((state) => state.isLoggedIn)
     const[click, setClick] = useState(false);
@@ -31,6 +32,11 @@ export default function Header() {
 
     window.addEventListener('resize', showButton);
 
+    const handleClicked = () => {
+        dispatch(authActions.logout());
+        navigate("/login");
+    }
+
   return (
     <nav className='header'>
         <div className='nav-container'>
@@ -45,7 +51,7 @@ export default function Header() {
                 <li className='nav-item'><Link to="/login" className='nav-links-mobile' onClick={closeMobileMenu}>Sign In</Link></li>
             </ul>
             {button && !isLoggedIn && <Button buttonStyle='btn--outline'>SIGN IN</Button>}
-            {button && isLoggedIn && <button onClick={() => dispatch(authActions.logout())}>Logout</button> /*<NoteBtn buttonStyle='btn--outline' onClick={() => dispatch(authActions.logout())*/ }
+            {button && isLoggedIn && <button onClick={handleClicked}>Logout</button> /*<NoteBtn buttonStyle='btn--outline' onClick={() => dispatch(authActions.logout())*/ }
         </div>
         
     </nav>
