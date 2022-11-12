@@ -8,6 +8,7 @@ import Display from '../Display.js'
 import { useDispatch } from 'react-redux';
 import { authActions } from '../../store';
 import { useNavigate } from 'react-router-dom';
+import * as api from '../../api/index.js';
 
 export default function SignUp() {
     const [listOfUsers, setListOfUsers] = useState([]);
@@ -26,7 +27,7 @@ export default function SignUp() {
     const createUser = (e) => {
       e.preventDefault()
 
-      Axios.post("http://localhost:9001/createUser", {
+      Axios.post('http://localhost:9001/createUser',{
         name,
         email,
         password,

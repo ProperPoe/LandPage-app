@@ -6,10 +6,6 @@ const ExperiencesSchema = new mongoose.Schema({
         required: true,
     },
     image: String,
-    likeCount: {
-        type: Number,
-        default: 0,
-    },
     user: {
         type: mongoose.Types.ObjectId,
         ref: "users",

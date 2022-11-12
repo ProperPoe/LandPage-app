@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const UserModel = require('../models/Users.js');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const { restart } = require('nodemon');
 
 const router = express.Router();
@@ -24,6 +25,7 @@ exports.createUser = async (req, res) => {
     const newUser = new UserModel({name, email, password: hashedPassword, posts: [],});
     await newUser.save();
 
+    //const token = jwt.sign({ email: newUser.email, id: newUser._id }, 'test', { expiresIn: '1h' })
     return res.status(200).json({newUser})
 }
 
@@ -43,5 +45,6 @@ exports.login = async (req, res) => {
     if (!isPasswordCorrect) {
         return res.status(400).json({message: "Incorrect Password"})
     }
+    //const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, 'test', { expiresIn: '1h' })
     return res.status(200).json({message: "Login Successful", user: existingUser})
 }

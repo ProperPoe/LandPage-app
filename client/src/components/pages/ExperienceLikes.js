@@ -1,33 +1,29 @@
-
 import React, {useState} from 'react'
 import Axios  from 'axios';
 import ExperienceView from './ExperienceView';
 import Space from './images/space.jpg'
+import * as api from '../../api/index.js'
 
-function ExperienceLikes({setListExperience, listExperience, picClicked ,setPickClicked, viewPost, image, isUser}) {
+function ExperienceLikes({setListExperience, listExperience, picClicked ,setPickClicked, viewPost, image, isUser, setEdit, setEditID}) {
     const cardStyles = {
         background: "#ffffff",
         boxShadow: "0px 10px 30px",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: "space-around",
         width: "300px",
         height: "300px",
         marginLeft: "30px",
         marginTop: "20px",
+        marginRight: "30px",
+        //padding: "1rem",
         position: "relative",
     }
 
     const updateLike = (id) => {
-        Axios.put(`http://localhost:9001/${id}/likePost`)
-            .then((response) => {
-                    setListExperience((previous) => {
-                        return previous.map((hmm) => {
-                            return hmm._id === id ? {...hmm, likeCount: response.data.likeCount} : hmm
-                        })
-                    })
-                }
-            )
+      setEdit(true);
+      setEditID(id)
+            
     }
 
 
@@ -54,7 +50,7 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
                         </div>
                         <div className='what'>
                             <div className={picClicked === true ?'likeBtnContainer-hidden' : 'likeBtnContainer'}>
-                                <button key={id} className='likeBtn' type='button' onClick={() => updateLike(post._id)}>Like {post.likeCount}</button>
+                                <button key={id} className='likeBtn' type='button' onClick={() => updateLike(post._id)}>Edit</button>
                             </div>
                             
                                 <div className={!post.user._id || isUser === post.user._id ? 'deleteBtnContainer' : 'deleteHidden'}>

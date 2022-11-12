@@ -8,7 +8,7 @@ import Experiences from "./components/pages/Experiences";
 import SignUp from "./components/pages/SignUp";
 import Login from "./components/pages/Login"
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { authActions } from "./store";
 
 function App() {

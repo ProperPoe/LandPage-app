@@ -18,7 +18,7 @@
     display: flex;
     justify-content: center;
     overflow: hidden;
-    width: 300px;
+    width: 400px;
     height: 200px;
     margin-left: 30px;
     margin-right: 30px;
@@ -41,6 +41,41 @@
 
 .form--card form button{
     background-color: aqua;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    height: 2rem;
+    margin-top: 10px;
+}
+.edit--card {
+    background-color: rgb(209, 203, 203);
+    box-shadow: 0px 10px 20px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    width: 400px;
+    height: 200px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 20px;
+
+}
+
+.edit--card form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+    padding: 10px;
+
+}
+
+.edit--card form textarea{
+    margin-bottom: 10px;
+}
+
+.edit--card form button{
+    background-color: red;
     cursor: pointer;
     font-weight: bold;
     font-size: 1rem;

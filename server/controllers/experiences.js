@@ -32,7 +32,7 @@ exports.createExperience = async (req, res) => {
 
     const newEx = new ExperiencesModel({location, image, likeCount, user});
     
-    try {
+    /*try {
         const session = await mongoose.startSession();
         session.startTransaction();
         await newEx.save({session});
@@ -43,32 +43,31 @@ exports.createExperience = async (req, res) => {
     } catch (err) {
         console.log(err);
         return res.status(500).json({message: err})
-    }
+    }*/
 
-    //await newEx.save();
+    await newEx.save();
     
     res.status(200).json({newEx})
     
 }
 
-exports.likePost = async (req, res) => {
-    const id = req.params.id;
+exports.updatePost = async (req, res) => {
+    const newLocation = req.body.newLocation;
+    const id = req.body.editID;
 
-    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+    let post;
+    try {
+            post = await ExperiencesModel.findById(id);
+            post.location = newLocation;
+            post.save();
+    } catch (error) {
+        return console.log(error)
+    }
+    if(!post){
+        return res.status(500).json({ message: "Unable to update post" })
+    }
 
-    const listExperience = await ExperiencesModel.findByIdAndUpdate(id);
-
-    /*if(listExperience.likeCount === 0){
-        listExperience.likeCount += 1;
-    }else if(listExperience.likeCount > 0){
-        listExperience.likeCount = 0;
-    }*/
-    listExperience.likeCount += 1;
-    
-
-    await listExperience.save();
-    
-    res.json(listExperience)
+    res.status(200).json({ post });
 }
 
 exports.deletePost = async (req, res) => {
