@@ -6,11 +6,11 @@ import * as api from '../../api/index.js'
 
 function ExperienceLikes({setListExperience, listExperience, picClicked ,setPickClicked, viewPost, image, isUser, setEdit, setEditID}) {
     const cardStyles = {
-        background: "#ffffff",
+        background: "black",
         boxShadow: "0px 10px 30px",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-around",
+        //justifyContent: "space-around",
         width: "300px",
         height: "300px",
         marginLeft: "30px",
@@ -45,13 +45,19 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
                                 {post.location}
                             </div>
                             <div className={picClicked === true ?'image-hidden' : 'image'} style={ { display: "flex", justifyContent: "center"} } >
-                                <img src={post.image} alt='pic' style={ { width: "100%", height: "254px", maxHeight:"100%", overflow: "hidden", marginBottom: "20px"} } height={125} />
+                                <img src={post.image} alt='pic' style={ { width: "100%", height: "242px", maxHeight:"100%", overFlow: "hidden", marginBottom: "20px"} } height={125} />
                             </div> 
                         </div>
                         <div className='what'>
-                            <div className={picClicked === true ?'likeBtnContainer-hidden' : 'likeBtnContainer'}>
+                            {isUser === post.user._id || !post.user._id ? 
+                            <div className={picClicked === true ? 'likeBtnContainer-hidden' : 'likeBtnContainer'}>
                                 <button key={id} className='likeBtn' type='button' onClick={() => updateLike(post._id)}>Edit</button>
                             </div>
+                            :
+                            <div className={picClicked === true ? 'likeBtnContainer-hidden' : 'likeBtnContainer'}>
+                                <button key={id} className='likeBtn-hidden' type='button'></button>
+                            </div>
+                            }
                             
                                 <div className={!post.user._id || isUser === post.user._id ? 'deleteBtnContainer' : 'deleteHidden'}>
                                     <button className='deleteBtn' type='button' onClick={() => deletePost(post._id)}>Delete</button>

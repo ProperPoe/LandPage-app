@@ -32,7 +32,8 @@ export default function SignUp() {
         email,
         password,
       }).then((response) => {
-          localStorage.setItem("userID", response.user.data._id)
+          console.log(response)
+          localStorage.setItem("userID", response.data.newUser._id)
         })
         .then(() => dispatch(authActions.login()))
         .then(() => navigate("/Experiences"))

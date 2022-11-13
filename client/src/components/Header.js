@@ -51,7 +51,7 @@ export default function Header() {
                 <li className='nav-item'><Link to="/login" className='nav-links-mobile' onClick={closeMobileMenu}>Sign In</Link></li>
             </ul>
             {button && !isLoggedIn && <Button buttonStyle='btn--outline'>SIGN IN</Button>}
-            {button && isLoggedIn && <button onClick={handleClicked}>Logout</button> /*<NoteBtn buttonStyle='btn--outline' onClick={() => dispatch(authActions.logout())*/ }
+            {button && isLoggedIn &&  <button className='btn--signout' onClick={handleClicked}>LOG OUT</button>}
         </div>
         
     </nav>

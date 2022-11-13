@@ -56,7 +56,7 @@ export default function Weather() {
       <div className='card'>
         <form onSubmit={handleSubmit}>
         <input onChange={handleChange} type='search'/>
-        <button onClick={handleClick} type='submit'>Search</button>
+        <button className='btn-weather' onClick={handleClick} type='submit'>Search</button>
         </form>
         <div className='weather--display'>
           <div>City: {weather.name}</div>

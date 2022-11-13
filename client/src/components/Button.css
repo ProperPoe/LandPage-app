@@ -19,6 +19,11 @@
     padding: 8px 20px;
     transition: all 0.3s ease-out;
   }
+
+  .btn--outline:hover {
+    background-color: green;
+    color: white;
+  }
   
   .btn--medium {
     padding: 8px 20px;

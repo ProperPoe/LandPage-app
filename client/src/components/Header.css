@@ -9,6 +9,15 @@
     z-index: 999;
   }
 
+  .btn--signout {
+    border: 1px solid white;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    padding: 8px 20px;
+    transition: all 0.3s ease-out;
+  }
+
 .nav-container {
     display: flex;
     justify-content: center;

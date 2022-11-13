@@ -5,11 +5,34 @@
     opacity: .8;
     padding: 2em;
     position: fixed;
-    width: 284px;
+    width: 355px;
+}
+
+.card input{
+    height: 31px;
+    font-size: 1rem;
+    background-color: rgb(49, 47, 47);
+    border-radius: 10px;
+    color: white;
 }
 
 .weather--display {
     color: white;
     display: flex;
     flex-direction: column;
+}
+
+.btn-weather{
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    padding: 8px 20px;
+    transition: all 0.3s ease-out;
+    margin-left: 5px;
+}
+
+.btn-weather:hover{
+    background-color: green;
+    color: white;
 }
