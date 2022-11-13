@@ -10,7 +10,7 @@ body {
 }
 
 .layout form {
-        background-color: aqua;
+        background-color: rgb(223, 213, 213);
         border-radius: 20px;
         box-shadow: 10px 10px 30px;
         display: flex;

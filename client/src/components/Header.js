@@ -34,6 +34,7 @@ export default function Header() {
 
     const handleClicked = () => {
         dispatch(authActions.logout());
+        setClick(false)
         navigate("/login");
     }
 
@@ -48,7 +49,12 @@ export default function Header() {
                 <li className='nav-item'><Link to="/" className='nav-links' onClick={closeMobileMenu}>Weather</Link></li>
                 <li className='nav-item'><Link to="/flights" className='nav-links' onClick={closeMobileMenu}>Flights</Link></li>
                 <li className='nav-item'><Link to="/experiences" className='nav-links' onClick={closeMobileMenu}>Experiences</Link></li>
+                {localStorage.getItem("userID") ?
+                <li className='nav-item'><Link to="/login" className='nav-links-mobile' onClick={handleClicked}>Log Out</Link></li>
+                :
                 <li className='nav-item'><Link to="/login" className='nav-links-mobile' onClick={closeMobileMenu}>Sign In</Link></li>
+                }
+                
             </ul>
             {button && !isLoggedIn && <Button buttonStyle='btn--outline'>SIGN IN</Button>}
             {button && isLoggedIn &&  <button className='btn--signout' onClick={handleClicked}>LOG OUT</button>}

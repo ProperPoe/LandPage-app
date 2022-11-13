@@ -44,10 +44,10 @@ export default function Flights() {
   return (
     <div className='flights'>
       <div className='flightCard-container'>
-        <div>
+        <div className='flight-input'>
           <form onSubmit={handleSubmit}>
             <input onChange={handleChange} type='text' />
-            <button type='submit'>Search</button>
+            <button className='btn-flight' type='submit'>Search</button>
           </form>
         </div>
         <div className='flight-info'>

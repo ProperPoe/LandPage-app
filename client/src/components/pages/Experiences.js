@@ -70,7 +70,11 @@ function Experiences() {
 return (
     <>
     <div className={picClicked === true ? 'form-contain-hidden' : 'form--contain'}>
-        {!edit ? 
+        {!localStorage.getItem("userID") ? 
+        <div className='form--card'>
+            <div className='signin-message'>Sign-in to share an Experience of a place you've visited</div>
+        </div> :
+        !edit ? 
         <div className='form--card'>
             <form onSubmit={createExperience}>
                 <textarea type='text' placeholder='Enter a location...' onChange={(event) => {setLocation(event.target.value)}} />
