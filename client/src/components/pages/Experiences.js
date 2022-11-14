@@ -47,6 +47,7 @@ function Experiences() {
         setEdit(false)
     }
 
+
     useEffect(() => {
         Axios.get('http://localhost:9001/')
             .then((response) => {
@@ -55,6 +56,8 @@ function Experiences() {
             
         
     }, []);
+    
+     
 
     const viewPost = async (id) => {
         setPickClicked(true)

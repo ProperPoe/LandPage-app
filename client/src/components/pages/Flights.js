@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import {v4 as uuid} from 'uuid'
 import './Flights.css'
 
+const page = Math.floor(Math.random() * 20) + 1
+
 export default function Flights() {
   const [inputVal, setInputVal] = useState("")
   const [flights, setFlights] = useState([]);
@@ -10,12 +12,25 @@ export default function Flights() {
   const [departTime, setDepartTime] = useState("")
   const [arriveAirport, setArriveAirport] = useState("")
   const [arriveTime, setArriveTime] = useState("")
+  const [bg, setBg] = useState("")
+  const [photo, setPhoto] = useState("Airport")
 
+  const bgStyle = {
+    backgroundImage: `url(${bg})`,
+    height: '100vh', 
+    backgroundPosition: "center center", 
+    backgroundSize: "cover", 
+    backgroundRepeat: "no-repeat", 
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+}
   useEffect(() => {
-    fetch(`http://api.aviationstack.com/v1/flights?access_key=${process.env.REACT_APP_FLIGHT}`)
+    fetch(`http://api.aviationstack.com/v1/flights?access_key=${process.env.REACT_APP_FLIGHT}`, {referrerPolicy: "unsafe-url"})
       .then(resp => resp.json())
       .then(data => {
-        setFlights(data.data)   
+        setFlights(data.data)  
       })
   }, [])
 
@@ -36,13 +51,21 @@ export default function Flights() {
         setArriveTime(flights[index].arrival.estimated)
       }
     })
-
-    
-
   }
 
+  useEffect(() => {
+    fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${photo}&client_id=${process.env.REACT_APP_BG}`)
+      .then(res => res.json())
+      .then(data => {
+        
+        //setBackState(pics)
+        setBg(data.results[Math.floor(Math.random() * 9) + 1].urls.raw)
+      })
+  }, [photo])
+
+
   return (
-    <div className='flights'>
+    <div className='flights' style={bgStyle}>
       <div className='flightCard-container'>
         <div className='flight-input'>
           <form onSubmit={handleSubmit}>
@@ -72,6 +95,9 @@ export default function Flights() {
               <div className='time'>TIME:</div>
               <div>{arriveTime ? arriveTime : ""}</div>
             </div>
+          </div>
+          <div className='flight-status'>
+            <h3>Status: </h3>
           </div>  
         </div>
       </div>

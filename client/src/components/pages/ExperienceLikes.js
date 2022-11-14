@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Axios  from 'axios';
 import ExperienceView from './ExperienceView';
 import Space from './images/space.jpg'
@@ -45,6 +45,7 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
                                 {post.location}
                             </div>
                             <div className={picClicked === true ?'image-hidden' : 'image'} style={ { display: "flex", justifyContent: "center"} } >
+                                <span className='name'>{post.user.name}</span>
                                 <img src={post.image} alt='pic' style={ { width: "100%", height: "242px", maxHeight:"100%", overFlow: "hidden", marginBottom: "20px"} } height={125} />
                             </div> 
                         </div>
