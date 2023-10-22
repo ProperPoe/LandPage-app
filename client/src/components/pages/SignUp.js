@@ -27,7 +27,7 @@ export default function SignUp() {
     const createUser = (e) => {
       e.preventDefault()
 
-      Axios.post('http://localhost:9001/api/createUser',{
+      Axios.post('https://travel-prep-290b6c1204c7.herokuapp.com/api/createUser',{
         name,
         email,
         password,
