@@ -23,7 +23,10 @@ app.use(cors());
 app.use('/api', userRoutes)
 app.use('/api', experienceRoutes)
 
-mongoose.connect(process.env.CONNECT)
+mongoose.connect(process.env.CONNECT, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
 
 const PORT = process.env.PORT || 9001;
 
