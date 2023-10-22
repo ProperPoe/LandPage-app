@@ -11,7 +11,7 @@ export default function Weather() {
   //const [backState, setBackState] = useState("");
   const [search, setSearch] = useState("");
   const [photo, setPhoto] = useState("Denver")
-
+  const navBarHeight = 80;
   console.log(page)
  
 
@@ -52,8 +52,9 @@ export default function Weather() {
   }, [photo])
 
   return (
-    <div className='weather' style={ { backgroundImage: `url('${bg}')`, height: '100vh', backgroundPosition: "center center", backgroundSize: "cover", backgroundRepeat: "no-repeat", width: "100%", display: "flex", justifyContent: "center", alignItems: "center"}} >
+    <div className='weather' style={ { backgroundImage: `url('${bg}')`, height: `calc(100vh - ${navBarHeight}px)`, paddingTop: `${navBarHeight}px`, backgroundPosition: "center center", backgroundSize: "cover", backgroundRepeat: "no-repeat", width: "100%", display: "flex", justifyContent: "center", alignItems: "center"}} >
       <div className='card'>
+        <h6>Enter a city to get the weather and an image of the city</h6>
         <form onSubmit={handleSubmit}>
         <input onChange={handleChange} type='search'/>
         <button className='btn-weather' onClick={handleClick} type='submit'>Search</button>

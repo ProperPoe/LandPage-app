@@ -16,6 +16,15 @@
     color: white;
 }
 
+h6 {
+    color: white;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .weather--display {
     color: white;
     display: flex;

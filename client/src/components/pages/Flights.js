@@ -12,6 +12,7 @@ export default function Flights() {
   const [departTime, setDepartTime] = useState("")
   const [arriveAirport, setArriveAirport] = useState("")
   const [arriveTime, setArriveTime] = useState("")
+  const [flightStatus, setFlightStatus] = useState("")
   const [bg, setBg] = useState("")
   const [photo, setPhoto] = useState("Airport")
 
@@ -27,7 +28,7 @@ export default function Flights() {
     alignItems: "center",
 }
   useEffect(() => {
-    fetch(`http://api.aviationstack.com/v1/flights?access_key=${process.env.REACT_APP_FLIGHT}`, {referrerPolicy: "unsafe-url"})
+    fetch(`http://api.aviationstack.com/v1/flights?access_key=${process.env.REACT_APP_FLIGHT}`)
       .then(resp => resp.json())
       .then(data => {
         setFlights(data.data)  
@@ -49,6 +50,7 @@ export default function Flights() {
         setDepartTime(flights[index].departure.estimated)
         setArriveAirport(flights[index].arrival.airport)
         setArriveTime(flights[index].arrival.estimated)
+        setFlightStatus(flights[index].flight_status)
       }
     })
   }
@@ -97,7 +99,7 @@ export default function Flights() {
             </div>
           </div>
           <div className='flight-status'>
-            <h3>Status: </h3>
+            <h3>Status: {flightStatus} </h3>
           </div>  
         </div>
       </div>
