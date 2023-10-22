@@ -18,7 +18,7 @@ export default function Login() {
   const updateLogin = async (e) => {
     e.preventDefault();
 
-    await Axios.post('http://localhost:9001/login', {email, password})
+    await Axios.post('http://localhost:9001/api/login', {email, password})
       .then((response) => {
         localStorage.setItem("userID", response.data.user._id)
       })

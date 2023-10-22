@@ -27,7 +27,7 @@ export default function SignUp() {
     const createUser = (e) => {
       e.preventDefault()
 
-      Axios.post('http://localhost:9001/createUser',{
+      Axios.post('http://localhost:9001/api/createUser',{
         name,
         email,
         password,

@@ -24,7 +24,7 @@ function Experiences() {
     const createExperience = async (e) => {
         e.preventDefault();
 
-        await Axios.post('http://localhost:9001/', {location, image, user: localStorage.getItem("userID")})
+        await Axios.post('http://localhost:9001/api', {location, image, user: localStorage.getItem("userID")})
             .then((response) => {
                 setListExperience([{_id: response.data.newEx._id, location, image, likeCount: response.data.newEx.likeCount, user: response.data.newEx.user}, ...listExperience]);
                 console.log(response)
@@ -35,7 +35,7 @@ function Experiences() {
         e.preventDefault();
         const newLocation = editLocation;
 
-        Axios.put(`http://localhost:9001/${editID}/updatePost`, {newLocation, editID})
+        Axios.put(`http://localhost:9001/api/${editID}/updatePost`, {newLocation, editID})
             .then((response) => {
                 setListExperience((previous) => {
                     return previous.map((prev) => {
@@ -49,7 +49,7 @@ function Experiences() {
 
 
     useEffect(() => {
-        Axios.get('http://localhost:9001/')
+        Axios.get('http://localhost:9001/api')
             .then((response) => {
                 setListExperience(response.data.reverse())
             })
@@ -62,7 +62,7 @@ function Experiences() {
     const viewPost = async (id) => {
         setPickClicked(true)
         setViewId(id)
-        await Axios.get(`http://localhost:9001/${id}/getPost`)
+        await Axios.get(`http://localhost:9001/api/${id}/getPost`)
             .then((response) => {
                 setViewLocation(response.data.location)
                 setViewImage(response.data.image)
