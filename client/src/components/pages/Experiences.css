@@ -97,7 +97,7 @@ textarea {
 .experience--container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    
 } 
 
 .experience-contain-hidden{

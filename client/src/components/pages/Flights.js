@@ -70,6 +70,7 @@ export default function Flights() {
     <div className='flights' style={bgStyle}>
       <div className='flightCard-container'>
         <div className='flight-input'>
+        <h6>Enter a valid flight number and get flight details</h6>
           <form onSubmit={handleSubmit}>
             <input onChange={handleChange} type='text' />
             <button className='btn-flight' type='submit'>Search</button>

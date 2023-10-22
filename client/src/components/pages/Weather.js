@@ -19,6 +19,7 @@ export default function Weather() {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.REACT_APP_WEATHER}`)
       .then(resp => resp.json())
       .then(data => {
+        console.log(data)
         setWeather(data)
       }
   )}, [city])
@@ -62,7 +63,7 @@ export default function Weather() {
         <div className='weather--display'>
           <div>City: {weather.name}</div>
           <div>Temp: {weather.main && Math.round(weather.main.temp)}℉</div>
-          <div>Conditions: {weather.weather && weather.weather[0].main}</div>
+          <div>Conditions: {weather.weather && weather.weather[0].main} </div>
         </div>
       </div>
     </div>
