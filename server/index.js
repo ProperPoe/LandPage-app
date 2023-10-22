@@ -28,10 +28,10 @@ mongoose.connect(process.env.CONNECT, {
     useUnifiedTopology: true,
   })
 
-const PORT = process.env.PORT || 9001;
+const PORT = process.env.PORT || 9000;
 
 app.listen(PORT, () => {
-    console.log("Server listening 9001")
+    console.log("Server listening 9000")
 })
 
 app.get('*', (req, res) => {
