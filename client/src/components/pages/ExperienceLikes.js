@@ -8,10 +8,11 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
     const cardStyles = {
         background: "black",
         boxShadow: "0px 10px 30px",
+        cursor: "pointer",
         display: "flex",
         flexDirection: "column",
-        //justifyContent: "space-around",
-        width: "300px",
+        justifyContent: "center",
+        width: "550px",
         height: "300px",
         marginLeft: "30px",
         marginTop: "20px",
@@ -37,7 +38,7 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
     }
 
     return(
-        <>
+        <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
         {listExperience.map((post, id) => 
                     <div key={post._id} className={`experience--card$`} style={cardStyles}>
                         <div className='card-container' onClick={() => {viewPost(post._id)}}>
@@ -68,7 +69,7 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
                         
                     </div>
             )}
-        </>
+        </div>
     )
 }
 
