@@ -53,7 +53,7 @@ export default function Weather() {
   }, [photo])
 
   return (
-    <div className='weather' style={ { backgroundImage: `url('${bg}')`, height: `100vh`, paddingTop: `${navBarHeight}px`, backgroundPosition: "center center", backgroundSize: "cover", backgroundRepeat: "no-repeat", width: "100%", display: "flex", justifyContent: "center", alignItems: "center"}} >
+    <div className='weather' style={ { backgroundImage: `url('${bg}')`, height: `100vh`, paddingTop: `${navBarHeight}px`, backgroundPosition: "center center", backgroundSize: "cover", backgroundRepeat: "no-repeat", width: "100%", display: "flex"}} >
       <div className='card'>
         <h6>Enter a city to get the weather and an image of the city</h6>
         <form onSubmit={handleSubmit}>

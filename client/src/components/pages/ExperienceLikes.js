@@ -3,23 +3,23 @@ import Axios  from 'axios';
 import ExperienceView from './ExperienceView';
 import Space from './images/space.jpg'
 import * as api from '../../api/index.js'
-
+import './ExperienceLikes.css'
 function ExperienceLikes({setListExperience, listExperience, picClicked ,setPickClicked, viewPost, image, isUser, setEdit, setEditID}) {
-    const cardStyles = {
-        background: "black",
-        boxShadow: "0px 10px 30px",
-        cursor: "pointer",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        width: "550px",
-        height: "300px",
-        marginLeft: "30px",
-        marginTop: "20px",
-        marginRight: "30px",
-        //padding: "1rem",
-        position: "relative",
-    }
+    // const cardStyles = {
+    //     background: "black",
+    //     boxShadow: "0px 10px 30px",
+    //     cursor: "pointer",
+    //     display: "flex",
+    //     flexDirection: "column",
+    //     justifyContent: "center",
+    //     width: "575px",
+    //     height: "300px",
+    //     marginLeft: "30px",
+    //     marginTop: "20px",
+    //     marginRight: "30px",
+    //     //padding: "1rem",
+    //     position: "relative",
+    // }
 
     const updateLike = (id) => {
       setEdit(true);
@@ -38,9 +38,9 @@ function ExperienceLikes({setListExperience, listExperience, picClicked ,setPick
     }
 
     return(
-        <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
+        <div className='the-contain'>
         {listExperience.map((post, id) => 
-                    <div key={post._id} className={`experience--card$`} style={cardStyles}>
+                    <div key={post._id} className='experience--card'>
                         <div className='card-container' onClick={() => {viewPost(post._id)}}>
                             <div className='locate'>
                                 {post.location}
