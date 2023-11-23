@@ -94,11 +94,11 @@ textarea {
     height: 20px;
 }
 
-.experience--container{
+/* .experience--container{
     display: flex;
     flex-wrap: wrap;
     
-} 
+}  */
 
 .experience-contain-hidden{
     display: none;

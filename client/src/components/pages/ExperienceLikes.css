@@ -1,27 +1,22 @@
-.the-contain{
-    display: flex;
-    flex-wrap: wrap;
+.the-contain {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Use auto-fit for responsive columns */
+    gap: 20px;
     justify-content: center;
-    /* gap: 20px; */
-    
-    
-
-
-
-       
-    
+    align-items: center;
+    padding: 20px;
 }
-.experience--card{
+
+.experience--card {
     cursor: pointer;
     background-color: black;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     box-shadow: 0px 10px 30px;
-    width: 100%; /* Adjust to 100% to make it responsive */
-    max-width: 500px; 
+    max-width: 400px;
+    width: 100%;
     height: 300px;
-    margin: 20px; /* Use shorthand for margin */
     position: relative;
     overflow: hidden;
 }
