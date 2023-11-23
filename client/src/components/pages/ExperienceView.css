@@ -1,23 +1,59 @@
-.view-header {
-    background-color: black;
-    color: white;
+
+
+.view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    position: relative;
+    z-index: 1000;
 }
 
-.view-header button{
-    background-color: transparent;
+.view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.view-header h2 {
+    color: white;
+    margin: 0;
+}
+
+.view-header button {
+    background: none;
     border: none;
+    font-size: 1.5rem;
     color: white;
     cursor: pointer;
-    font-size: 2.5rem;
-    position: absolute;
-    right: 0;
 }
 
 .view-image {
-    background-color: black;
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.view-image img {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+    object-fit: contain; 
+}
+
+
+@media screen and (max-width: 600px) {
+    .view-header h2 {
+        font-size: 1rem;
+    }
+
+    .view-header button {
+        font-size: 1rem;
+    }
 }
